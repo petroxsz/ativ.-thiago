@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector2 movement;
 
+    private int coinCount = 0;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,5 +25,14 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 move = new Vector3(movement.x, 0.0f, movement.y);
         rb.AddForce(move * speed);
+    }
+
+    public void CollectCoin()
+    {
+        coinCount++;
+
+        Debug.Log("Moedas coletadas: " + coinCount);
+
+        PlayerOM.NotifyCoinChanged(coinCount);
     }
 }

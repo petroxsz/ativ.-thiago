@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton
         if (Instance == null)
         {
             Instance = this;
@@ -52,6 +51,12 @@ public class GameManager : MonoBehaviour
 
             case "SampleScene":
                 SetState(GameState.Gameplay);
+
+                SceneManager.LoadScene(
+                    "GUI",
+                    LoadSceneMode.Additive
+                );
+
                 break;
         }
     }
